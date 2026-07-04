@@ -1,0 +1,19 @@
+{
+  "name": "凜月靈魂小世界",
+  "short_name": "靈魂小世界",
+  "description": "凜月與殷漓的離線互動小世界。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff2f8",
+  "theme_color": "#d77f99",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
