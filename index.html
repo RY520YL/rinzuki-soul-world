@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#d77f99">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="凜月靈魂小世界">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <title>凜月靈魂小世界</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,.92) 0 10%, transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(255,210,228,.88) 0 12%, transparent 32%),
+        linear-gradient(135deg, #fff2f8, #f2e9ff 58%, #e9f7ff);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", system-ui, sans-serif;
+    }
+    .shell { position: fixed; inset: 0; display: grid; }
+    iframe { width: 100%; height: 100%; border: 0; background: transparent; }
+    .loading {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #8c4a61;
+      font-weight: 800;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+    .loading.hidden { opacity: 0; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <iframe id="appFrame" src="app.html" title="凜月靈魂小世界"></iframe>
+  </div>
+  <div id="loading" class="loading">正在開啟凜月靈魂小世界...</div>
+  <script>
+    const frame = document.getElementById("appFrame");
+    const loading = document.getElementById("loading");
+    frame.addEventListener("load", () => loading.classList.add("hidden"));
+
+    if ("serviceWorker" in navigator && location.protocol !== "file:") {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
