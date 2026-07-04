@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>凜月靈魂小世界</title><body style="margin:0;font-family:system-ui,sans-serif;background:#fff2f8;color:#8c4a61;display:grid;place-items:center;min-height:100vh;font-weight:800">正在開啟凜月靈魂小世界...</body><script>
+(async()=>{
+  const files=["chunks/app-00.txt","chunks/app-01.txt","chunks/app-02.txt","chunks/app-03.txt","chunks/app-04.txt","chunks/app-05.txt","chunks/app-06.txt","chunks/app-07.txt","chunks/app-08.txt"];
+  const parts=[];
+  for (const file of files) parts.push(await fetch(file,{cache:'force-cache'}).then(r=>{if(!r.ok)throw new Error(file);return r.text()}));
+  document.open();
+  document.write(parts.join(''));
+  document.close();
+})().catch(err=>{document.body.textContent='載入失敗，請重新整理：'+err.message});
+</script>
